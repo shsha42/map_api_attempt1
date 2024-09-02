@@ -1,12 +1,20 @@
+import org.gradle.internal.impldep.org.bouncycastle.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
 android {
+
+
+
     namespace = "com.example.maps_test"
     compileSdk = 34
 
     defaultConfig {
+
+        resValue("string", "google_maps_key", "MAPS_API_KEY")
         applicationId = "com.example.maps_test"
         minSdk = 34
         targetSdk = 34
@@ -15,6 +23,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -26,9 +35,13 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+
 
     implementation(libs.appcompat)
     implementation(libs.material)
